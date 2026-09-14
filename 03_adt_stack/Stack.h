@@ -11,17 +11,17 @@
 
 #pragma once
 
-//#include <vector>
+//#include <vector> commented out due to Lab instruction
 
 class Stack {
 public:
     Stack();
-    void push(int value);    // add to the top
-    int pop();               // remove the top (does nothing if empty)
-    int peek() const;         // look at the top without removing it
-    bool isEmpty() const;
-    bool isFull() const;
-    int size() const;
+    void push(int value);   // add to the top (does nothing if full)
+    int pop();              // remove the top (does nothing if empty)
+    int peek() const;       // look at the top without removing it (returns -1 if empty)
+    bool isEmpty() const;   // checks if array topIndex == -1
+    bool isFull() const;    // checks if array topIndex == 99
+    int size() const;       // checks takes topIndex adds 1 and returns this value as size
 
 private:
     // This is the REPRESENTATION. It's private on purpose: nothing
