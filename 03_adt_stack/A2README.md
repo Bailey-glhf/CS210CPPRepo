@@ -1,0 +1,40 @@
+##Reflection Questions
+1) What value does topIndex hold immediately after construction, and why does that specific value make isEmpty() return the right answer with no special-casing?
+
+After construction, the topIndex variable is held at -1 so that counting of added pushes starts at 0. This makes isEmpty() return the correct value since isEmpty is defined to return true if topIndex = -1.
+
+2) Walk through push step by step, in words: what happens to data and topIndex, in what order, and why would swapping that order break the stack?
+
+When a push is called with a push value the value the topIndex is first incremented to the new slot and the value is then stored there so that it is at the top of the stack. If we stored the value first and then incremented it would write a value to our -1 slot which is out of bounds or if the stack already had values stored it would rewrite over a previously stored value.
+
+3) Give the time complexity of push, pop, peek, isEmpty, isFull, and size, individually, in Big-O. For each one, justify it by describing what your code actually does, not by naming the general rule for stacks.
+
+The time complexity for each operation is O(1) since arrays use direct access to indexing and we do not have to iterate through stack items to complete any of the following operations:
+
+Push - checks if stack is full 1T, increments topIndex 1T, assigns value to topIndex1T
+
+Pop - initiates pop value 1T, checks if stack is empty 1T, if stack is not empty assigns pop to topIndex 1T of array, decrements topIndex, checks if stack is empty 1T, if stack is empty assigns pop to -1 1T, returns pop
+
+Peek - initiates peek value 1T, checks if stack is empty 1T, if stack is not empty assigns peek to topIndex of array1T, checks if stack is empty 1T, if stack is empty assigns peek to -1 1T, returns peek
+
+IsEmpty - checks bool if topIndex = -1 1T returns true
+
+IsFull - checks bool if topIndex = 99 1T returns true
+
+Size - returns topIndex plus 1 and returns this value 1T
+
+4) Exactly what happens in your code when push is called while the stack is full? State what prints (if anything), what gets returned (if anything), and whether topIndex changes. Then say why you chose that behavior.
+
+When push is called the topIndex is incremented and push value is stored into the new incremented slot of the array. There is nothing printed and no return, but the topIndex is altered to reflect the new push. If the stack is full, an attempt to push will not execute and the stack will remain the same as it was immediately prior to push attempt, topIndex would not increment and would equal 99. I chose this behaviour because it seemed the simplest way to avoid error and rewriting over existing data.
+
+5) Exactly what happens when pop or peek is called while the stack is empty? Same level of detail as above.
+
+If stack is empty when pop is called it will skip the pop decrementing action completely and leave topIndex and the return pop value as -1, leaving stack empty. If the stack is empty when peek is called the return peek value is set to -1, topIndex is unchanged. There is no automatic print directly associated with either pop or peek definitions, this must be written in manually in the main(). I chose this behaviour so that -1 will signal an empty array since array iterations usually begin counting at 0 for assigned slots.
+
+6) Your array is fixed at 100 slots. If a caller needed more room than that, what would have to change in your class to support it, and what would it likely cost in terms of the time complexity you gave in question 3?
+
+For more slots in a fixed array I would need to change the set data[100] to a dynamic array which would need to copy over any value stored in the original to a new larger array which would take O(n) time because it would have to iterate through each slot copy over then delete the old one. This would just be for one resizing though, the other basic operations would remain O(1).
+
+7) Without looking anything up: if this stack were built on a linked list instead of an array, name one advantage and one disadvantage that trade-off would bring, based on what you already know about how arrays and pointers behave differently.
+
+To my knowledge but one advantage that I think a linked list would have is that it’s size is dynamic so we wouldn’t have to copy over to another array in order to expand. Since the memory is not blocked together though, the memory required for the pointers would to know where to point to the next or previous slot would require more overhead.
