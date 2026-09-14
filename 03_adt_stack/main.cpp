@@ -10,19 +10,22 @@
 int main() {
     Stack s;
 
-    s.push(10);
+    std::cout << "Is empty? " << (s.isEmpty() ? "yes" : "no") << std::endl;         //checks if array isEmpty() after initializing should return yes
+
+    s.push(10);                                                                //adds values to stack
     s.push(20);
     s.push(30);
 
-    std::cout << "Stack size: " << s.size() << std::endl;
-    std::cout << "Top: " << s.peek() << std::endl;
+    std::cout << "Stack size: " << s.size() << std::endl;                           //checks size and displays size of stack
+    std::cout << "Top: " << s.peek() << std::endl;                                  //peak and displays top of stack
 
-    s.pop();
-    std::cout << "After pop, top: " << s.peek() << std::endl;
-    std::cout << "Is empty? " << (s.isEmpty() ? "yes" : "no") << std::endl;
+    s.pop();                                                                        //pop to remove top from stack
+    std::cout << "After pop, top: " << s.peek() << std::endl;                       //peak and displays top of stack
+    std::cout << "Is empty? " << (s.isEmpty() ? "yes" : "no") << std::endl;         //checks if array isEmpty hardcoded values should return no
+    std::cout << "Is full? " << (s.isEmpty() ? "yes" : "no") << std::endl;          //checks if array isFull hardcoded values should return no
 
     return 0;
-}
+}   //end of main
 
 // TRY IT LIVE: ask the class "what data structure is UNDER this stack?"
 // Nobody can answer just from reading this file, and that's correct --

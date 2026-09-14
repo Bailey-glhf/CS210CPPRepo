@@ -50,7 +50,7 @@ int Stack::peek() const {
 
 bool Stack::isEmpty() const {
     // TODO: return whether data_ has zero elements
-    return topIndex == 0;
+    return topIndex == -1;
 }
 
 bool Stack::isFull() const {
